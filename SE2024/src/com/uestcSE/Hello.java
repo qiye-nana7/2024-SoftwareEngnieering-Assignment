@@ -1,4 +1,4 @@
-package com.sxt;
+package com.uestcSE;
 
 public class Hello {
 	public static void main(String[] args) {
