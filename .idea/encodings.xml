@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/controller/AddCourse.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/controller/AddUser.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/controller/CheckInfo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/controller/CourseView.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/controller/DeleteUser.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/controller/EditInfo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/controller/GradeEnter.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/controller/GradeInfo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/controller/GradeSort.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/controller/Info.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/model/Administrator.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/model/Course.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/model/Student.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/view/AdministratorPanel.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/view/MainFrame.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/view/SortGradeFrame.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/view/StudentsPanel.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/view/TeachersPanel.java" charset="GBK" />
+  </component>
+</project>
