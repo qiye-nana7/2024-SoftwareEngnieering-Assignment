@@ -177,9 +177,22 @@ public class AddCourse extends JFrame implements ActionListener {
 					}
 
 					//  除了添加对应课程文件外，还需要添加课程成绩文件以及课程学生文件
-					File gradeFile = new File(System.getProperty("user.dir")+"/data/grade"+course.getCourseName()+".txt");
-					File studentFile = new File(System.getProperty("user.dir")+"/data/course_student"+course.getCourseName()+"_student.txt");
-
+					File gradeFile = new File(System.getProperty("user.dir")+"/data/grade/"+course.getCourseName()+".txt");
+					File studentFile = new File(System.getProperty("user.dir")+"/data/course_student/"+course.getCourseName()+"_student.txt");
+					if(!gradeFile.exists()){
+                        try {
+                            gradeFile.createNewFile();
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+					if(!studentFile.exists()){
+						try {
+							studentFile.createNewFile();
+						} catch (IOException ex) {
+							throw new RuntimeException(ex);
+						}
+					}
 
 
 					JOptionPane.showMessageDialog(null, "添加成功", "提示", JOptionPane.INFORMATION_MESSAGE);

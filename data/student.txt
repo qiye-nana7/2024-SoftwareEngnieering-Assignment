@@ -1,3 +1,4 @@
 a 123456 jack male 2020.2.2 computer software
 a1 123456 jack1 m 2000.1.1 computer software
 a2 123 jack2 male 2000.1.1 computer software
+stu123 123456 fumo male 2000.08.11 computer net

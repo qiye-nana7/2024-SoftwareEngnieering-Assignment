@@ -9,11 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import controller.AddCourse;
-import controller.CourseView;
-import controller.EditInfo;
-import controller.GradeEnter;
-import controller.Info;
+import controller.*;
 
 
 @SuppressWarnings("serial")
@@ -24,13 +20,13 @@ public class TeachersPanel extends JFrame implements ActionListener {
 	
 	String idd;
 	JPanel contain;
-	JButton infoButton, gradeButton, courseButton, editButton, courseView, sortGrade;
+	JButton infoButton, gradeButton, courseButton, editButton, courseView, sortGrade,addStudent;
 
 	public TeachersPanel(String idd) {
 		super("教师");
 		this.idd = idd;
-		setLocation(300, 200);
-		setSize(300, 340);
+		setLocation(300, 250);
+		setSize(300, 500);
 		contain = new JPanel();
 		contain.setLayout(null);
 		add(contain);
@@ -39,8 +35,9 @@ public class TeachersPanel extends JFrame implements ActionListener {
 		courseButton = new JButton("全部课程");
 		editButton = new JButton("修改信息");
 		courseView = new JButton("开课");
-		
+
 		sortGrade = new JButton("成绩统计");
+		addStudent = new JButton("添加新学生");
 		
 		infoButton.setBounds(70, 40, 140, 30);
 		editButton.setBounds(70, 80, 140, 30);
@@ -49,7 +46,8 @@ public class TeachersPanel extends JFrame implements ActionListener {
 		gradeButton.setBounds(70, 200, 140, 30);
 		
 		sortGrade.setBounds(70, 240, 140, 30);
-		
+		addStudent.setBounds(70,280,140,30);
+
 		contain.add(infoButton);
 		infoButton.addActionListener(this);
 		contain.add(gradeButton);
@@ -63,7 +61,8 @@ public class TeachersPanel extends JFrame implements ActionListener {
 		
 		contain.add(sortGrade);
 		sortGrade.addActionListener(this);
-		
+		contain.add(addStudent);
+		addStudent.addActionListener(this);
 		
 		setVisible(true);
 		enableEvents(AWTEvent.WINDOW_EVENT_MASK);
@@ -87,6 +86,9 @@ public class TeachersPanel extends JFrame implements ActionListener {
 		}
 		if(e.getSource() == sortGrade){
 			new SortGradeFrame();
+		}
+		if(e.getSource() == addStudent){
+			new AddCourseStudent();
 		}
 	}
 
