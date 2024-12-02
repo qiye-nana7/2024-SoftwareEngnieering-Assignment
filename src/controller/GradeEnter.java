@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -28,7 +29,7 @@ public class GradeEnter extends JFrame implements ActionListener {
 	String idd;  // 教师号
 	JPanel contain;
 	JLabel id;
-	JTextField idt, stuIdt, stuGradet, stuNamet;
+	JTextField idt, stuIdt, stuGradet;
 	
 	String targetFile;
 	
@@ -101,35 +102,36 @@ public class GradeEnter extends JFrame implements ActionListener {
 								
 								// 将原来的内容先复制
 								String s1 = "";
-								for (int j = 0; j < result.length - 1; j++) {
-									s1 = s1 + result[j];
+								if(Objects.equals(result[4], stuIdt.getText())){
+									s1 = idt.getText();
 									s1 = s1 + " ";
+									s1 = s1 + result[1];
+									s1 = s1 + " ";
+									s1 = s1 + result[2];
+									s1 = s1 + " ";
+									s1 = s1 + result[3];
+									s1 = s1 + " ";
+									s1 = s1 + stuIdt.getText();
+									s1 = s1 + " ";
+									s1 = s1 + result[5];
+									s1 = s1 + " ";
+									s1 = s1 + stuGradet.getText();
 								}
-								s1 = s1 + result[result.length - 1];
+								else {
+									for (int j = 0; j < result.length - 1; j++) {
+										s1 = s1 + result[j];
+										s1 = s1 + " ";
+									}
+									s1 = s1 + result[result.length - 1];
+								}
+
 								
 								modifiedContent.add(s1);
 							
 							}
 						} // 读完一个成绩文件
-						
-						if (result[0].equals(idt.getText())){
-							String gradeInfo = idt.getText();
-							gradeInfo = gradeInfo + " ";
-							gradeInfo = gradeInfo + result[1];
-							gradeInfo = gradeInfo + " ";
-							gradeInfo = gradeInfo + result[2];
-							gradeInfo = gradeInfo + " ";
-							gradeInfo = gradeInfo + result[3];
-							gradeInfo = gradeInfo + " ";
-							gradeInfo = gradeInfo + stuIdt.getText();
-							gradeInfo = gradeInfo + " ";
-							gradeInfo = gradeInfo + stuNamet.getText();
-							gradeInfo = gradeInfo + " ";
-							gradeInfo = gradeInfo + stuGradet.getText();
-							modifiedContent.add(gradeInfo);
-						}
-						
-						br.close();
+
+                        br.close();
 					}
 				} catch (Exception ee) {
 					ee.printStackTrace();
@@ -220,7 +222,6 @@ public class GradeEnter extends JFrame implements ActionListener {
 		
 		stuIdt = new JTextField();
 		stuGradet = new JTextField();
-		stuNamet = new JTextField();
 		
 		stuId.setBounds(38, 50, 75, 35);
 		stuIdt.setBounds(80, 50, 150, 35);
@@ -229,15 +230,12 @@ public class GradeEnter extends JFrame implements ActionListener {
 		stuGradet.setBounds(80, 110, 150, 35);
 		
 		stuName.setBounds(38, 170, 75, 35);
-		stuNamet.setBounds(80, 170, 150, 35);
 		
 		bn.setBounds(170, 220, 70, 30);
 		contain.add(stuId);
 		contain.add(stuIdt);
 		contain.add(stuGrade);
 		contain.add(stuGradet);
-		contain.add(stuName);
-		contain.add(stuNamet);
 		contain.add(bn);
 		fm.add(contain);
 		bn.addActionListener(this);

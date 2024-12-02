@@ -34,6 +34,8 @@ public class AddCourseStudent extends JFrame implements ActionListener {
 
     String courseName;
     String stuName;
+    String teacherId;
+    String teacherName;
 
     public AddCourseStudent() {
         super("添加新学生");
@@ -95,6 +97,8 @@ public class AddCourseStudent extends JFrame implements ActionListener {
                 String[] result = s.split(" ");//以空格为间隔，将读入信息存入数组中
                 if (result[0].equals(id)) {
                     courseName = result[1];
+                    teacherId = result[4];
+                    teacherName = result[5];
                     return true;
                 }
             }
@@ -117,8 +121,10 @@ public class AddCourseStudent extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(null, "学号为" + studentIdt.getText() + "的学生不存在！", "提示", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     String file = System.getProperty("user.dir") + "/data/course_student/" + courseName + "_student.txt";
+                    String gradeFile = System.getProperty("user.dir") + "/data/grade/" + courseName + ".txt";
 
                     ArrayList<String> modifiedContent = new ArrayList<String>();
+                    ArrayList<String> modifiedContent2 = new ArrayList<String>();
                     // StringBuilder result = new StringBuilder();
                     try {
                         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -140,6 +146,26 @@ public class AddCourseStudent extends JFrame implements ActionListener {
                     } catch (Exception e1) {
                         e1.printStackTrace();
                     }
+                    try{
+                        BufferedReader br = new BufferedReader(new FileReader(gradeFile));
+                        String s = null;
+                        while ((s = br.readLine()) != null) {  // 先将原来存在的信息存储起来
+                            String[] result = s.split(" ");
+
+                            String s1 = "";
+                            for (int i = 0; i < result.length - 1; i++) {
+                                s1 = s1 + result[i];
+                                s1 = s1 + " ";
+                            }
+                            s1 = s1 + result[result.length - 1];
+                            // System.out.println(s1);
+                            modifiedContent.add(s1);
+                        }
+                        br.close();
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
 
                     modifiedContent.add(idt.getText()+" "+courseName+" "+studentIdt.getText()+" "+stuName);
                     try{
@@ -157,6 +183,21 @@ public class AddCourseStudent extends JFrame implements ActionListener {
                         ex.printStackTrace();
                     }
 
+                    modifiedContent2.add(idt.getText()+" "+courseName+" "+teacherId+" "+teacherName+" "+studentIdt.getText()+" "+stuName+" 0");
+                    try{
+                        FileWriter fw = new FileWriter(gradeFile);
+                        BufferedWriter bw = new BufferedWriter(fw);
+
+                        for(String s : modifiedContent2){
+                            bw.write(s);
+                            bw.newLine();
+                        }
+
+                        bw.close();
+                        fw.close();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                     JOptionPane.showMessageDialog(null, "添加成功", "提示", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
